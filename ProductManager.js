@@ -1,6 +1,6 @@
-const fs = require("fs");
+import fs from "fs";
 
-class ProductManager {
+export default class ProductManager {
   constructor(testingFile) {
     this.testingFile = testingFile;
     this.products = [];
@@ -29,9 +29,10 @@ class ProductManager {
       return;
     }
 
+    const maxId = Math.max(...this.products.map((product) => product.id), 0);
     const addedProduct = {
       ...product,
-      id: this.products.length + 1,
+      id: maxId + 1,
     };
 
     this.products.push(addedProduct);
@@ -107,59 +108,3 @@ class ProductManager {
     console.log(`Updated Product ${id} `);
   }
 }
-
-///////////////////////////////////////////TESTING PROCESS//////////////////////////////////////////////////
-
-const productManager = new ProductManager("testingFileProducts.json");
-
-const products = productManager.getProducts();
-console.log(products);
-
-const addedProduct = {
-  title: "producto prueba",
-  description: "Este es un producto prueba",
-  price: 200,
-  thumbnail: "Sin imagen",
-  code: "abc123",
-  stock: 25,
-};
-
-productManager.addProduct(addedProduct);
-
-const updatedProducts = productManager.getProducts();
-console.log(updatedProducts);
-
-const foundProduct = productManager.getProductById(1);
-console.log(foundProduct);
-
-const notFoundProduct = productManager.getProductById(10);
-console.log(notFoundProduct);
-
-const updatedProduct = {
-  title: "producto actualizado",
-  description: "Este es un producto actualizado",
-  price: 600,
-  thumbnail: "Imagen actualizada",
-  code: "abc123",
-  stock: 6,
-};
-
-productManager.updateProduct(1, updatedProduct);
-console.log(productManager.getProducts());
-
-const otherProduct = {
-  title: "producto prueba 2",
-  description: "Este es un otro producto prueba",
-  price: 200,
-  thumbnail: "Sin imagen",
-  code: "cfg852",
-  stock: 15,
-};
-
-productManager.addProduct(otherProduct);
-
-productManager.deleteProduct(1);
-console.log(productManager.getProducts());
-
-productManager.deleteProduct(25);
-console.log(productManager.getProducts());
