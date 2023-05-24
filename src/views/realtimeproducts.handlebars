@@ -1,0 +1,95 @@
+<div id="dynamic-products">
+  {{#each products}}
+    <div>
+      <h2>{{title}}</h2>
+      <p>ID: {{id}}</p>
+      <p>{{description}}</p>
+      <p>PRICE: ${{price}}</p>
+      <p>STOCK: {{stock}}</p>
+      <p>STATUS: {{status}}</p>
+      <p>CODE: {{code}}</p>
+      <p>{{thumbnail}}</p>
+    </div>
+  {{/each}}
+</div>
+
+<div id="dynamic-products">
+  {{#each limitedProducts}}
+    <div>
+      <h2>{{title}}</h2>
+      <p>ID: {{id}}</p>
+      <p>{{description}}</p>
+      <p>PRICE: ${{price}}</p>
+      <p>STOCK: {{stock}}</p>
+      <p>STATUS: {{status}}</p>
+      <p>CODE: {{code}}</p>
+      <p>{{thumbnail}}</p>
+    </div>
+  {{/each}}
+</div>
+
+<div id="dynamic-products">
+  {{#each productById}}
+    <div>
+      <h2>{{title}}</h2>
+      <p>ID: {{id}}</p>
+      <p>{{description}}</p>
+      <p>PRICE: ${{price}}</p>
+      <p>STOCK: {{stock}}</p>
+      <p>STATUS: {{status}}</p>
+      <p>CODE: {{code}}</p>
+      <p>{{thumbnail}}</p>
+    </div>
+  {{/each}}
+</div>
+
+<div>
+  <form id="addProductForm">
+    <h2>Add Product</h2>
+    <div>
+      <label for="titleProduct">
+        <input type="text" name="title" id="titleProduct" placeholder="Title" required/>
+      </label>
+    </div>
+    <div>
+      <label for="descriptionProduct">
+        <input
+          type="text"
+          name="description"
+          id="descriptionProduct"
+          placeholder="Description"
+          required
+        />
+      </label>
+    </div>
+  </form>
+  <div>
+    <label for="priceProduct">
+      <input type="number" name="price" id="priceProduct" placeholder="Price" required />
+    </label>
+  </div>
+  <div>
+    <label for="stockProduct">
+      <input type="number" name="stock" id="stockProduct" placeholder="Stock" required />
+    </label>
+  </div>
+
+  <button type="submit">Add</button>
+</div>
+
+<div>
+  <form id="deleteProductForm">
+    <h2>Delete Product</h2>
+    <div>
+      <label for="productId">
+        ID
+        <input type="number" id="productId" name="productId" placeholder="Product ID"/>
+      </label>
+      <button type="submit">Delete</button>
+    </div>
+
+  </form>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/test-socket.js"></script>
